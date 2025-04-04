@@ -1,0 +1,148 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890",
+    "name": "University Auth API - Maroc",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Initialisation système",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/auth/init",
+          "host": ["{{base_url}}"],
+          "path": ["api","auth","init"]
+        }
+      }
+    },
+    {
+      "name": "2. Premier login Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/login",
+          "host": ["{{base_url}}"],
+          "path": ["api","auth","login"]
+        }
+      }
+    },
+    {
+      "name": "3. Changement MDP Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{temp_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"currentPassword\": \"admin\",\n    \"newPassword\": \"Admin123@\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/change-password",
+          "host": ["{{base_url}}"],
+          "path": ["api","auth","change-password"]
+        }
+      }
+    },
+    {
+      "name": "4. Créer Professeur Marocain",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"role\": \"PROFESSOR\",\n    \"nom\": \"Alaoui\",\n    \"prenom\": \"Fatima\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/admin/users",
+          "host": ["{{base_url}}"],
+          "path": ["api","admin","users"]
+        }
+      }
+    },
+    {
+      "name": "5. Créer Étudiant Marocain",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"role\": \"STUDENT\",\n    \"nom\": \"Benali\",\n    \"prenom\": \"Mehdi\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/admin/users",
+          "host": ["{{base_url}}"],
+          "path": ["api","admin","users"]
+        }
+      }
+    },
+    {
+      "name": "6. Lister Utilisateurs (Admin)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/admin/users",
+          "host": ["{{base_url}}"],
+          "path": ["api","admin","users"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "admin_token",
+      "value": ""
+    },
+    {
+      "key": "temp_token",
+      "value": ""
+    }
+  ]
+}
