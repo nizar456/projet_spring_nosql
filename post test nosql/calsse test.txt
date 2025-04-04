@@ -1,0 +1,30 @@
+1. Créer une classe :
+POST {{base_url}}/api/admin/classes
+Headers:
+  Authorization: Bearer {{admin_token}}
+  Content-Type: application/json
+
+Body:
+{
+  "nom": "Informatique 101",
+  "niveau": "PREMIERE_ANNEE"
+}
+2. Lister toutes les classes :
+GET {{base_url}}/api/admin/classes
+Headers:
+  Authorization: Bearer {{admin_token}}
+3. Affecter un étudiant :
+POST {{base_url}}/api/admin/classes/affecter-etudiant
+Headers:
+  Authorization: Bearer {{admin_token}}
+  Content-Type: application/json
+
+Body:
+{
+  "classeId": "65a1b2c3d4e5f67890abcd12",
+  "etudiantId": "65a1b2c3d4e5f67890abcd13"
+}
+4. Supprimer une classe :
+DELETE {{base_url}}/api/admin/classes/65a1b2c3d4e5f67890abcd12
+Headers:
+  Authorization: Bearer {{admin_token}}
